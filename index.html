@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airports Directory</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        .edit-btn {
+            padding: 5px 10px;
+            background-color: blue;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h2>Airports Directory</h2>
+    <input type="text" id="searchBar" onkeyup="searchAirports()" placeholder="Search for airports by code or country...">
+    <table>
+        <thead>
+            <tr>
+                <th>Code</th>
+                <th>Country</th>
+                <th>Summer Level</th>
+                <th>Winter Level</th>
+                <th>GCR</th>
+                <th>PPR</th>
+                <th>Info</th>
+                <th>Email</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="airportsTable"></tbody>
+    </table>
+
+    <script>
+        let airportsData = [];
+
+        async function loadAirports() {
+            const response = await fetch('airports.json'); // Adjust path if needed
+            airportsData = await response.json();
+            displayAirports(airportsData);
+        }
+
+        function displayAirports(data) {
+            const tableBody = document.getElementById('airportsTable');
+            tableBody.innerHTML = '';
+            data.forEach(airport => {
+                let row = `<tr>
+                    <td>${airport.code}</td>
+                    <td>${airport.country}</td>
+                    <td>${airport.summer}</td>
+                    <td>${airport.winter}</td>
+                    <td>${airport.gcr}</td>
+                    <td>${airport.ppr}</td>
+                    <td>${airport.info}</td>
+                    <td>${airport.email}</td>
+                    <td><button class='edit-btn' onclick="editAirport('${airport.code}')">Edit</button></td>
+                </tr>`;
+                tableBody.innerHTML += row;
+            });
+        }
+
+        function searchAirports() {
+            let query = document.getElementById('searchBar').value.toLowerCase();
+            let filteredAirports = airportsData.filter(airport => 
+                airport.code.toLowerCase().includes(query) || 
+                airport.country.toLowerCase().includes(query)
+            );
+            displayAirports(filteredAirports);
+        }
+
+        function editAirport(code) {
+            window.location.href = `edit_airport.html?code=${code}`;
+        }
+
+        loadAirports();
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Airport</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+        }
+        label, input {
+            display: block;
+            margin-bottom: 10px;
+            width: 100%;
+        }
+        button {
+            padding: 10px;
+            margin-right: 10px;
+            border: none;
+            cursor: pointer;
+        }
+        .save-btn {
+            background-color: blue;
+            color: white;
+        }
+        .discard-btn {
+            background-color: red;
+            color: white;
+        }
+        .return-btn {
+            background-color: gray;
+            color: white;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <button type="button" class="return-btn" onclick="goBack()">Return to Airports Search</button>
+    <h2>Edit Airport</h2>
+    <form id="editForm">
+        <label>Code: <input type="text" id="code" readonly></label>
+        <label>Country: <input type="text" id="country"></label>
+        <label>Summer Level: <input type="text" id="summer"></label>
+        <label>Winter Level: <input type="text" id="winter"></label>
+        <label>GCR: <input type="text" id="gcr"></label>
+        <label>PPR: <input type="text" id="ppr"></label>
+        <label>Info: <input type="text" id="info"></label>
+        <label>Email: <input type="text" id="email"></label>
+        <button type="button" class="save-btn" onclick="saveChanges()">Save Changes</button>
+        <button type="button" class="discard-btn" onclick="discardChanges()">Discard Changes</button>
+    </form>
+    <script>
+        let airportsData = [];
+        
+        async function loadAirportDetails() {
+            const params = new URLSearchParams(window.location.search);
+            const airportCode = params.get('code');
+            const response = await fetch('airports.json');
+            airportsData = await response.json();
+            const airport = airportsData.find(a => a.code === airportCode);
+            if (airport) {
+                document.getElementById('code').value = airport.code;
+                document.getElementById('country').value = airport.country;
+                document.getElementById('summer').value = airport.summer;
+                document.getElementById('winter').value = airport.winter;
+                document.getElementById('gcr').value = airport.gcr;
+                document.getElementById('ppr').value = airport.ppr;
+                document.getElementById('info').value = airport.info;
+                document.getElementById('email').value = airport.email;
+            }
+        }
+        
+        function saveChanges() {
+    const updatedAirport = {
+        code: document.getElementById('code').value,
+        country: document.getElementById('country').value,
+        summer: document.getElementById('summer').value,
+        winter: document.getElementById('winter').value,
+        gcr: document.getElementById('gcr').value,
+        ppr: document.getElementById('ppr').value,
+        info: document.getElementById('info').value,
+        email: document.getElementById('email').value
+    };
+
+    fetch('/update-airport', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(updatedAirport)
+    })
+    .then(response => response.json())
+    .then(data => {
+        alert(data.message);
+        window.location.href = 'index.html'; // Redirect back to the main page
+    })
+    .catch(error => {
+        console.error('Error updating airport:', error);
+        alert('Failed to update airport.');
+    });
+}
+
+        
+        function discardChanges() {
+            window.location.href = 'index.html'; // Redirect back to the airports search page
+        }
+        
+        function goBack() {
+            window.location.href = 'index.html';
+        }
+        
+        loadAirportDetails();
+    </script>
+</body>
+</html>
+
+
+
