@@ -60,6 +60,11 @@
     </style>
 </head>
 <body>
+    <div>
+        <button class="returnbutton" onclick="index()">Main Menu</button> 
+        <button class="returnbutton" onclick="airportsearch()">Airport Search</button>   
+    </div>
+
 
     <p id="date"></p>
 
@@ -104,6 +109,14 @@
 
 
     <script>
+
+        function index() {
+            window.location.href = 'index.html';
+        }
+        function airportsearch() {
+            window.location.href = 'airportsearch.html';
+        }
+
         document.getElementById("date").innerText = new Date().toLocaleDateString();
 
         function addNewSlotRow() {
