@@ -38,6 +38,11 @@
     </style>
 </head>
 <body>
+     <div>
+        <button class="returnbutton" onclick="index()">Main Menu</button> 
+        <button class="returnbutton" onclick="scrtest5()">SCR Generator</button>   
+    </div>
+
     <h2>Airports Directory</h2>
     <input type="text" id="searchBar" onkeyup="searchAirports()" placeholder="Search for airports by code or country...">
     <table>
@@ -58,6 +63,14 @@
     </table>
 
     <script>
+
+        function index() {
+            window.location.href = 'index.html';
+        }
+        function scrtest5() {
+            window.location.href = 'scrtest5.html';
+        }
+
         let airportsData = [];
 
         async function loadAirports() {
