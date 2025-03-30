@@ -291,6 +291,7 @@ function generateAllSCR() {
     let scrMessages = {};
     let currentDateUTC = getCurrentUTCDate();
     let aviationPeriod = getAviationPeriod();
+    let S25 = "S25"
 
     for (let i = 1; i < table.rows.length; i++) {
         let slotType = document.getElementById(`slotType${i}`)?.value || document.getElementById(`newSlotType${i}`)?.value;
@@ -299,7 +300,7 @@ function generateAllSCR() {
         if (!airport) continue;
 
         if (!scrMessages[airport]) {
-            scrMessages[airport] = `SCR\n${'S25'}\n${currentDateUTC}\n${airport}\n`;
+            scrMessages[airport] = `SCR\n${S25}\n${currentDateUTC}\n${airport}\n`;
         }
 
         scrMessages[airport] += generateSCR(i, slotType);
