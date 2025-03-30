@@ -299,7 +299,7 @@ function generateAllSCR() {
         if (!airport) continue;
 
         if (!scrMessages[airport]) {
-            scrMessages[airport] = `SCR\n${S25}\n${currentDateUTC}\n${airport}\n`;
+            scrMessages[airport] = `SCR\n${'S25'}\n${currentDateUTC}\n${airport}\n`;
         }
 
         scrMessages[airport] += generateSCR(i, slotType);
