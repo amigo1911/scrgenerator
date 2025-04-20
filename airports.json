@@ -69,6 +69,16 @@
     "info": "No airport details",
     "email": "alcops@azulhandling.com; alc.gtr@aena.es; r4occ@ryanair.com"
   },
+   {
+    "code": "AMM",
+    "country": "Jordan",
+    "summer": "Level 0",
+    "winter": "Level 0",
+    "gcr": "No",
+    "ppr": "Yes",
+    "info": "PPR ONLY FOR GA FLIGHTS. Please follow procedure on Flight Planner Bible for PPR application. Contact Number: 00962779916664 - AMM OPS",
+    "email": "amm.ops@ahs-group.com; amm.opsmanager@ahs-group.com; kefalass@ryanair.com; amm.opsdeputy@ahs-group.com;"
+  },
   {
     "code": "AMS",
     "country": "Netherlands",
