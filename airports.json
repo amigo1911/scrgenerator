@@ -1306,8 +1306,8 @@
     "summer": "Level 3",
     "winter": "Level 3",
     "gcr": "No",
-    "ppr": "No",
-    "info": "No airport details",
+    "ppr": "Yes",
+    "info": "For General Aviation Flights, also send SCR message to Sky Services -  email:  nap@skyservices.it // phone: +39 081 2311048 ",
     "email": "slot@assoclearance.it; opsnap@as-airport.it; adm@gesac.it; Apron_management@gesac.it; cds@gesac.it"
   },
   {
