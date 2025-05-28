@@ -1569,7 +1569,7 @@
     "winter": "Level 2",
     "gcr": "No",
     "ppr": "No",
-    "info": "No airport details",
+    "info": "GA Flights are coordinated by local authority. No need to send SCR email to assoclearance as long as SITA is sent by OPS to the local authority.",
     "email": "slot@assoclearance.it"
   },
   {
