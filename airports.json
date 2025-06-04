@@ -49,6 +49,16 @@
     "info": "No airport details",
     "email": "agp.gtr@aena.es; agpops@azulhandling.com; r4occ@ryanair.com; r4gops@ryanair.com"
   },
+   {
+    "code": "AHO",
+    "country": "Italy",
+    "summer": "Level 2",
+    "winter": "Level 2",
+    "gcr": "No",
+    "ppr": "No",
+    "info": "No airport details",
+    "email": "slot@assoclearance.it;"
+  },
   {
     "code": "AJA",
     "country": "France",
