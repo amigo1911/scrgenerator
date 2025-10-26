@@ -291,7 +291,7 @@ function generateAllSCR() {
     let scrMessages = {};
     let currentDateUTC = getCurrentUTCDate();
     let aviationPeriod = getAviationPeriod();
-    let S25 = "S25"
+    let W25 = "W25"
 
     for (let i = 1; i < table.rows.length; i++) {
         let slotType = document.getElementById(`slotType${i}`)?.value || document.getElementById(`newSlotType${i}`)?.value;
@@ -410,3 +410,4 @@ fetch('./airports.json')
     </script>
 </body>
 </html>
+
